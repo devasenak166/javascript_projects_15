@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="image-slider-from scratch">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+ 
+    <title>image-slider-from scratch</title>
+    <style>
+  .container {
+  border: 5px solid var(--clr-primary-5);
+  width: 80vw;
+  margin: 0 auto;
+  height: 40vh;
+  max-width: 80rem;
+  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-top: 4rem;
+}
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--clr-primary-9);
+  color: var(--clr-white);
+  display: grid;
+  place-items: center;
+  transition: all 0.25s ease-in-out;
+  text-align: center;
+}
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+.prev,
+.next {
+  background: transparent;
+  border-color: transparent;
+  font-size: 1.75rem;
+  cursor: pointer;
+  margin: 0 0.25rem;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  color: var(--clr-grey-5);
+  transition: var(--transition);
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="slide">
+            <img src="https://www.w3schools.com/howto/img_nature_wide.jpg" class="img-fluid slide-image" width="100%" height="100%" alt="">
+        </div>
+        <div  class="slide">
+            <img src="https://www.w3schools.com/howto/img_mountains_wide.jpg" class="img-fluid" width="100%" height="100%" alt="">
+        </div>
+        <div  class="slide">
+            <img src="https://www.w3schools.com/howto/img_snow_wide.jpg" class="img-fluid" width="100%" height="100%" alt="">
+        </div>
+        <div  class="slide">
+            <img src="https://vannilla-js-basic-project-15-slider.netlify.app/img-1.jpeg" class="img-fluid" width="100%" height="100%" alt="">
+        </div>
+    </div>
+    <div class="btn-container">
+        <button type="button" class="prev">
+          prev
+        </button>
+        <button type="button" class="next">
+          next
+        </button>
+      </div>
+    
+    <script>
+     const slides = document.querySelectorAll(".slide");
+const nextBtn = document.querySelector(".next");
+const prevBtn = document.querySelector(".prev");
+slides.forEach(function (slide, index) {
+  slide.style.left = `${index * 100}%`;
+});
+let counter = 0;
+nextBtn.addEventListener("click", function () {
+  counter++;
+  carousel();
+});
+
+prevBtn.addEventListener("click", function () {
+  counter--;
+  carousel();
+});
+
+function carousel() {
+  // working with slides
+  // if (counter === slides.length) {
+  //   counter = 0;
+  // }
+  // if (counter < 0) {
+  //   counter = slides.length - 1;
+  // }
+  // working with buttons
+
+  if (counter < slides.length - 1) {
+    nextBtn.style.display = "block";
+  } else {
+    nextBtn.style.display = "none";
+  }
+  if (counter > 0) {
+    prevBtn.style.display = "block";
+  } else {
+    prevBtn.style.display = "none";
+  }
+  slides.forEach(function (slide) {
+    slide.style.transform = `translateX(-${counter * 100}%)`;
+  });
+}
+
+prevBtn.style.display = "none";
+        </script>
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+ 
+</body>
+
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="menu with map and filter">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
+      rel="stylesheet"
+    />
+    <title>menu with map and filter</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="p-3 m-0 border-0 bd-example bg-body-muted"
+>
+   <!-- Example Code -->
+   <div class="container">
+     <div class="row">
+       <div class="d-flex justify-content-center mt-5">
+         <h2 style="letter-spacing: 2px">Our Menu</h2>
+       </div>
+       <div class="d-flex justify-content-center mt-4">
+         <button type="button" class="btn btn-outline-warning me-3 btn-sm" id="all">
+           All
+         </button>
+         <button type="button" class="btn btn-outline-warning me-3 btn-sm" id="breakfast">
+           Breakfast
+         </button>
+         <button type="button" class="btn btn-outline-warning me-3 btn-sm" id="shakes">
+            Shakes
+         </button>
+         <button type="button" class="btn btn-outline-warning me-3 btn-sm" id="lunch">
+          Lunch
+         </button>
+         <button type="button" class="btn btn-outline-warning me-3 btn-sm" id="dinner">
+          Dinner
+         </button>
+       </div>
+       <div class="container">
+       <div class="row" id="food_details">
+        
+       </div>
+    </div>
+       <!-- <div class="container">
+         <div class="grid gap-0 column-gap-3">
+           <div class="p-2 g-col-6">
+             <div
+             class="card mt-4 mb-3 d-flex justify-content-center border border-0"
+             style="max-width: 740px"
+           >
+             <div class="row g-0">
+               <div class="col-md-4 ">
+                 <img
+                   src="https://vanilla-js-basic-project-8-menu.netlify.app/images/item-2.jpeg"
+                   width="175"
+                   height="175"
+                   alt=""
+                   class="border border-4 border-warning rounded-4" id="image"
+                 />
+               </div>
+               <div class="col-md-8 ">
+                 <div class="card-body">
+                  
+                     <h5 class="card-title fs-6"  id="heading" style="letter-spacing: 3px; line-height: 2;border-bottom:1px dotted;">
+                       Buttermilk Pancakes<span class="fs-6  float-end"id="rupee"
+                         >$15.99</span
+                       >
+                     </h5>
+               
+                   <p class="card-text text-muted mt-4" id="description">
+                     I'm baby woke mlkshk wolf bitters live-edge blue bottle,
+                     hammock freegan copper mug whatever cold-pressed
+                   </p>
+                 
+                 </div>
+               </div>
+             </div>
+           </div>
+           </div>
+            <div class="p-2 g-col-6">
+             <div
+               class="card mt-4 mb-3 d-flex justify-content-center border border-0"
+               style="max-width: 740px"
+             >
+               <div class="row g-0">
+                 <div class="col-md-4 ">
+                   <img
+                     src="https://vanilla-js-basic-project-8-menu.netlify.app/images/item-1.jpeg"
+                     width="175"
+                     height="175"
+                     alt=""
+                     class="border border-4 border-warning rounded-4"
+                   />
+                 </div>
+                 <div class="col-md-8 ">
+                   <div class="card-body">
+                    
+                       <h5 class="card-title fs-6"  style="letter-spacing: 3px;  line-height: 2;border-bottom:1px dotted;">
+                         Buttermilk Pancakes<span class="fs-6 float-end"
+                           >$15.99</span
+                         >
+                       </h5>
+                     </a>
+                     <p class="card-text text-muted mt-4">
+                       I'm baby woke mlkshk wolf bitters live-edge blue bottle,
+                       hammock freegan copper mug whatever cold-pressed
+                     </p>
+                      <p class="card-text">
+                       <small class="text-body-secondary"
+                         >Last updated 3 mins ago</small
+                       >
+                     </p> 
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div> 
+         </div>
+       </div> -->
+     </div>
+   </div>
+   <!-- End Example Code -->
+
+
+
+
+
+   <script>
+   
+    const menu = [
+  {
+    id: 1,
+    title: "buttermilk pancakes",
+    category: "breakfast",
+    price: 15.99,
+    img: "https://vanilla-js-basic-project-8-menu.netlify.app/images/item-1.jpeg",
+    desc: `I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed `,
+  },
+  {
+    id: 2,
+    title: "diner double",
+    category: "lunch",
+    price: 13.99,
+    img: "https://vanilla-js-basic-project-8-menu.netlify.app/images/item-2.jpeg",
+    desc: `vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats `,
+  },
+  {
+    id: 3,
+    title: "godzilla milkshake",
+    category: "shakes",
+    price: 6.99,
+    img: "https://vanilla-js-basic-project-8-menu.netlify.app/images/item-3.jpeg",
+    desc: `ombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.`,
+  },
+  {
+    id: 4,
+    title: "country delight",
+    category: "breakfast",
+    price: 20.99,
+    img: "https://vanilla-js-basic-project-8-menu.netlify.app/images/item-4.jpeg",
+    desc: `Shabby chic keffiyeh neutra snackwave pork belly shoreditch. Prism austin mlkshk truffaut, `,
+  },
+  {
+    id: 5,
+    title: "egg attack",
+    category: "lunch",
+    price: 22.99,
+    img: "https://vanilla-js-basic-project-8-menu.netlify.app/images/item-5.jpeg",
+    desc: `franzen vegan pabst bicycle rights kickstarter pinterest meditation farm-to-table 90's pop-up `,
+  },
+  {
+    id: 6,
+    title: "oreo dream",
+    category: "shakes",
+    price: 18.99,
+    img: "https://vanilla-js-basic-project-8-menu.netlify.app/images/item-6.jpeg",
+    desc: `Portland chicharrones ethical edison bulb, palo santo craft beer chia heirloom iPhone everyday`,
+  },
+  {
+    id: 7,
+    title: "bacon overflow",
+    category: "breakfast",
+    price: 8.99,
+    img: "https://vanilla-js-basic-project-8-menu.netlify.app/images/item-7.jpeg",
+    desc: `carry jianbing normcore freegan. Viral single-origin coffee live-edge, pork belly cloud bread iceland put a bird `,
+  },
+  {
+    id: 8,
+    title: "american classic",
+    category: "lunch",
+    price: 12.99,
+    img: "https://vanilla-js-basic-project-8-menu.netlify.app/images/item-8.jpeg",
+    desc: `on it tumblr kickstarter thundercats migas everyday carry squid palo santo leggings. Food truck truffaut  `,
+  },
+  {
+    id: 9,
+    title: "quarantine buddy",
+    category: "shakes",
+    price: 16.99,
+    img: "https://vanilla-js-basic-project-8-menu.netlify.app/images/item-9.jpeg",
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  },
+  {
+    id: 10,
+    title: "bison steak",
+    category: "dinner",
+    price: 22.99,
+    img: "https://vanilla-js-basic-project-8-menu.netlify.app/images/item-10.jpeg",
+    desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+  },
+];
+let all=document.querySelector("#all")
+    let breakfast=document.querySelector("#breakfast")
+    let shakes=document.querySelector("#shakes")
+    let lunch=document.querySelector("#lunch")
+    let dinner=document.querySelector("#dinner")
+    // let heading=document.querySelector("#heading")
+    // let rupee=document.querySelector("#rupee")
+    // let description=document.querySelector("#description")
+  let detail= menu.map((item)=>{
+    return `
+    
+
+             <div
+             class="card mt-4 mb-3 d-flex justify-content-center border border-0"
+             style="max-width: 540px"
+           >
+             <div class="row g-0">
+               <div class="col-md-4 ">
+                 <img
+                   src="${item.img}"
+                   width="175"
+                   height="175"
+                   alt=""
+                   class="border border-4 border-warning rounded-4" id="image"
+                 />
+               </div>
+               <div class="col-md-8 ">
+                 <div class="card-body">
+                  
+                     <h5 class="card-title fs-6"  id="heading" style="letter-spacing: 3px; line-height: 2;border-bottom:1px dotted;">
+                      ${item.title}<span class="fs-6  float-end"id="rupee"
+                         >${item.price}</span
+                       >
+                     </h5>
+               
+                   <p class="card-text text-muted mt-4" id="description" style="font-size:18px">
+                  ${item.desc}
+                   </p>
+                 
+                 </div>
+               </div>
+               </div>
+               </div>
+            
+          `
+   })
+   document.querySelector("#food_details").innerHTML=detail
+   all.addEventListener("click",(e)=>{
+    e.preventDefault()
+
+let allfood_details=menu.map((item)=>{
+    return `
+    
+    <div
+             class="card mt-4 mb-3 d-flex justify-content-center border border-0"
+             style="max-width: 540px"
+           >
+             <div class="row g-0">
+               <div class="col-md-4 ">
+                 <img
+                   src="${item.img}"
+                   width="175"
+                   height="175"
+                   alt=""
+                   class="border border-4 border-warning rounded-4" id="image"
+                 />
+               </div>
+               <div class="col-md-8 ">
+                 <div class="card-body">
+                  
+                     <h5 class="card-title fs-6"  id="heading" style="letter-spacing: 3px; line-height: 2;border-bottom:1px dotted;">
+                      ${item.title}<span class="fs-6  float-end"id="rupee"
+                         >${item.price}</span
+                       >
+                     </h5>
+               
+                   <p class="card-text text-muted mt-4" id="description" style="font-size:18px">
+                  ${item.desc}
+                   </p>
+                 
+                 </div>
+               </div>
+               </div>
+               </div>
+            
+          `
+})
+document.querySelector("#food_details").innerHTML=allfood_details
+   })
+ 
+breakfast.addEventListener("click",(e)=>{
+    let breakFast=menu.filter((breakfast)=>{
+        return breakfast.category=='breakfast'
+    })
+    let breakfast_details=breakFast.map((item)=>{
+      return `
+      <div
+             class="card mt-4 mb-3 d-flex justify-content-center border border-0"
+             style="max-width: 540px"
+           >
+             <div class="row g-0">
+               <div class="col-md-4 ">
+                 <img
+                   src="${item.img}"
+                   width="175"
+                   height="175"
+                   alt=""
+                   class="border border-4 border-warning rounded-4" id="image"
+                 />
+               </div>
+               <div class="col-md-8 ">
+                 <div class="card-body">
+                  
+                     <h5 class="card-title fs-6"  id="heading" style="letter-spacing: 3px; line-height: 2;border-bottom:1px dotted;">
+                      ${item.title}<span class="fs-6  float-end"id="rupee"
+                         >${item.price}</span
+                       >
+                     </h5>
+               
+                   <p class="card-text text-muted mt-4" id="description" style="font-size:18px">
+                  ${item.desc}
+                   </p>
+                 
+                 </div>
+               </div>
+               </div>
+               </div>
+            
+          `
+    })
+    document.querySelector("#food_details").innerHTML=breakfast_details
+})
+
+lunch.addEventListener("click",(e)=>{
+    let lunchMenu=menu.filter((lunch)=>{
+        return lunch.category=='lunch'
+    })
+    let lunch_details=lunchMenu.map((item)=>{
+      return `
+      <div
+             class="card mt-4 mb-3 d-flex justify-content-center border border-0"
+             style="max-width: 540px"
+           >
+             <div class="row g-0">
+               <div class="col-md-4 ">
+                 <img
+                   src="${item.img}"
+                   width="175"
+                   height="175"
+                   alt=""
+                   class="border border-4 border-warning rounded-4" id="image"
+                 />
+               </div>
+               <div class="col-md-8 ">
+                 <div class="card-body">
+                  
+                     <h5 class="card-title fs-6"  id="heading" style="letter-spacing: 3px; line-height: 2;border-bottom:1px dotted;">
+                      ${item.title}<span class="fs-6  float-end"id="rupee"
+                         >${item.price}</span
+                       >
+                     </h5>
+               
+                   <p class="card-text text-muted mt-4" id="description" style="font-size:18px">
+                  ${item.desc}
+                   </p>
+                 
+                 </div>
+               </div>
+               </div>
+               </div>
+            
+          `
+    })
+    document.querySelector("#food_details").innerHTML=lunch_details
+})
+
+
+dinner.addEventListener("click",(e)=>{
+  e.preventDefault()
+    let dinnerlist=menu.filter((dinner)=>{
+        return dinner.category=='dinner'
+    })
+    let dinner_details=dinnerlist.map((item)=>{
+      return `
+      <div
+             class="card mt-4 mb-3 d-flex justify-content-center border border-0"
+             style="max-width: 540px"
+           >
+             <div class="row g-0">
+               <div class="col-md-4 ">
+                 <img
+                   src="${item.img}"
+                   width="175"
+                   height="175"
+                   alt=""
+                   class="border border-4 border-warning rounded-4" id="image"
+                 />
+               </div>
+               <div class="col-md-8 ">
+                 <div class="card-body">
+                  
+                     <h5 class="card-title fs-6"  id="heading" style="letter-spacing: 3px; line-height: 2;border-bottom:1px dotted;">
+                      ${item.title}<span class="fs-6  float-end"id="rupee"
+                         >${item.price}</span
+                       >
+                     </h5>
+               
+                   <p class="card-text text-muted mt-4" id="description" style="font-size:18px">
+                  ${item.desc}
+                   </p>
+                 
+                 </div>
+               </div>
+               </div>
+               </div>
+            
+          `
+    })
+    document.querySelector("#food_details").innerHTML=dinner_details
+})
+
+shakes.addEventListener("click",(e)=>{
+    let shakes=menu.filter((shakes)=>{
+        return shakes.category=='shakes'
+    })
+    let shakes_details=shakes.map((item)=>{
+      return `
+      <div
+             class="card mt-4 mb-3 d-flex justify-content-center border border-0"
+             style="max-width: 540px"
+           >
+             <div class="row g-0">
+               <div class="col-md-4 ">
+                 <img
+                   src="${item.img}"
+                   width="175"
+                   height="175"
+                   alt=""
+                   class="border border-4 border-warning rounded-4" id="image"
+                 />
+               </div>
+               <div class="col-md-8 ">
+                 <div class="card-body">
+                  
+                     <h5 class="card-title fs-6"  id="heading" style="letter-spacing: 3px; line-height: 2;border-bottom:1px dotted;">
+                      ${item.title}<span class="fs-6  float-end"id="rupee"
+                         >${item.price}</span
+                       >
+                     </h5>
+               
+                   <p class="card-text text-muted mt-4" id="description" style="font-size:18px">
+                  ${item.desc}
+                   </p>
+                 
+                 </div>
+               </div>
+               </div>
+               </div>
+            
+          `
+    })
+    document.querySelector("#food_details").innerHTML=shakes_details
+})
+
+    </script>
+ </body>
+</html>

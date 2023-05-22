@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Form with validation">
+    <title>Form with validation</title>
+    <script>
+        function handler(){
+            let username=document.querySelector("#username")
+            let password=document.querySelector("#password")
+            let email=document.querySelector("#email")
+            let phone=document.querySelector("#number")
+            let address=document.querySelector("#address")
+            let emailval=document.querySelector("#emailval")
+            let passwordval=document.querySelector("#passwordval")
+            // let phone=document.querySelector("#number")
+            let regx=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/; 
+            let emailvalid=/^([a-zA-Z0-9\.-]+)@([a-zA-Z0-9-]+)\.([a-z]{2,8})$/
+            let mobileNo=/^[5-9]\d{9}$/
+            // console.log(regx)
+         console.log(password.value)
+            if(email.value.trim()=="" || password.value.trim()==""){
+                email.style.border="3px solid red"
+                 emailval.style.visibility='visible'
+                   password.style.border="3px solid red"
+                 passwordval.style.visibility='visible'
+                alert("Oops Please Enter email and password which is required!..")
+                setTimeout(()=>{
+                    email.style.border="1px solid balck"
+                 emailval.style.visibility='hidden'
+                    password.style.border="1px solid black"
+                    passwordval.style.visibility='hidden'
+                   },2000)
+                return false
+            }
+        
+            else  if (email.value!="" &&  !regx.test(password.value) ){
+                console.log(password.value)
+
+                password.style.border="3px solid orange"
+                passwordval.textContent='Password is invalid'
+                 passwordval.style.visibility='visible'
+                   alert("Oops Please Enter strong password")
+                   setTimeout(()=>{
+                    password.style.border="1px solid black"
+                    passwordval.style.visibility='hidden'
+                   },2000)
+                return false
+            }
+            else if(!emailvalid.test(email.value) && password.value != "")
+            {
+                email.style.border="3px solid orange"
+                emailval.textContent='Email is invalid'
+                emailval.style.visibility='visible'
+                   alert("Oops Please Enter valid Email")
+                   setTimeout(()=>{
+                    email.style.border="1px solid black"
+                    emailval.style.visibility='hidden'
+                   },2000)
+                return false
+            }
+            else if(!mobileNo.test(phone.value)){
+                phone.style.border="3px solid orange"
+                phoneval.textContent='phone number  is invalid'
+                phoneval.style.visibility='visible'
+                   alert("Oops Please Enter valid Phone") 
+                   setTimeout(()=>{
+                    phone.style.border="1px solid black"
+                    phoneval.style.visibility='hidden'
+                   },2000)
+                return false
+            }
+
+            else{
+                return true
+            }
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return handler()">
+        <p>
+            User name: 
+            <input type="text" name="username" id="username">
+        </p>
+        <p>
+            E-mail:
+            <input type="text" name="email" id="email">
+            <label id="emailval" style="visibility:hidden"> Invalid email</label>
+        </p>
+       <p>
+        Password:
+        <input type="password" name="password" id="password">
+         <label id="passwordval" style="visibility:hidden"> Invalid password</label>
+       </p>
+       <p>
+        Mobile-No:
+        <input type="text" name="number" id="number">
+        <label id="phoneval" style="visibility:hidden"> Invalid Phone</label>
+       </p>
+       <p>
+        Address:
+        <input type="text" name="address" id="address">
+       </p>
+       <button type="submit">submit</button>
+    </form>
+</body>
+</html>

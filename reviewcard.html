@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="review card project 3">
+     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+      integrity="sha512-ZnR2wlLbSbr8/c9AgLg3jQPAattCUImNsae6NHYnS9KrIwRdcY9DxFotXhNAKIKbAXlRnujIqUWoXXwqyFOeIQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Red+Hat+Display:wght@500;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>review card project 3</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+       <div class="container">
+      <div class="row">
+        <div>
+          <h2 class="d-flex justify-content-center mt-4">Our Reviews</h2>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+          <div
+            class="
+              shadow
+              p-3
+              mb-5
+              bg-body-tertiary
+              rounded
+              card
+              border border-0
+              text-center
+            " 
+            style="width: 35rem"
+          >
+            <div class="text-center" >
+              <img
+                src="https://images2.imgbox.com/e0/57/qI5bbwvg_o.jpeg"
+                id="image"
+                class="rounded-circle mt-3"
+                width="140px"
+                height="140px"
+                alt=""
+              />
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fs-4 fw-bold" style="letter-spacing: 5px" id="name">
+                susan smith
+              </h5>
+              <p class="text-primary fs-4" id="job">web developer</p>
+              <p class="card-text text-muted" id="description">
+                I'm baby meggings twee health goth +1. Bicycle rights tumeric
+               <br />
+               </p>
+               <button id="pre-btn" class="btn bg-light btn-sm"
+               ><i
+                 class="bi bi-chevron-compact-left"
+                 style="font-size: 30px ; color:dodgerblue"
+               ></i
+             ></span>
+          </button>
+         
+               <button  id="next-btn" class="btn bg-light btn-sm">
+            
+               <i
+                 class="bi bi-chevron-compact-right"
+                 style="font-size: 30px ; color:dodgerblue" 
+               ></i
+             >
+             </button>
+             <br>
+              <a href="#" class="btn btn-outline-info" id="random">Surprise Me</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <script>
+        const reviews = [
+       {
+    id: 1,
+    name: 'susan smith',
+    job: 'web developer',
+    img: 'https://images2.imgbox.com/e0/57/qI5bbwvg_o.jpeg',
+    text: "I'm baby meggings twee health goth +1. Bicycle rights tumeric chartreuse before they sold out chambray pop-up. Shaman humblebrag pickled coloring book salvia hoodie, cold-pressed four dollar toast everyday carry",
+  },
+  {
+    id: 2,
+    name: 'anna johnson',
+    job: 'web designer',
+    img: 'https://images2.imgbox.com/2e/6e/JAMvTZ56_o.jpeg',
+    text: 'Helvetica artisan kinfolk thundercats lumbersexual blue bottle. Disrupt glossier gastropub deep v vice franzen hell of brooklyn twee enamel pin fashion axe.photo booth jean shorts artisan narwhal.',
+  },
+  {
+    id: 3,
+    name: 'peter jones',
+    job: 'intern',
+    img: 'https://images2.imgbox.com/56/88/oJvFN3l5_o.jpeg',
+    text: 'Sriracha literally flexitarian irony, vape marfa unicorn. Glossier tattooed 8-bit, fixie waistcoat offal activated charcoal slow-carb marfa hell of pabst raclette post-ironic jianbing swag.',
+  },
+  {
+    id: 4,
+    name: 'bill anderson',
+    job: 'the boss',
+    img: 'https://images2.imgbox.com/8b/1c/vwWNTsCd_o.jpeg',
+    text: 'Edison bulb put a bird on it humblebrag, marfa pok pok heirloom fashion axe cray stumptown venmo actually seitan. VHS farm-to-table schlitz, edison bulb pop-up 3 wolf moon tote bag street art shabby chic. ',
+  },
+];
+// select items
+
+let prebtn=document.querySelector("#pre-btn")
+let nextbtn=document.querySelector("#next-btn")
+let random=document.querySelector("#random")
+let name=document.querySelector("#name")
+let job=document.querySelector("#job")
+let description=document.querySelector("#description")
+let image=document.getElementById("image")
+console.log(image)
+console.log(prebtn)
+console.log(nextbtn)
+console.log(random)
+let reviewcurrentItem=0
+nextbtn.addEventListener("click",(e)=>{
+    e.preventDefault()
+   
+     reviewcurrentItem++;
+     if(reviewcurrentItem > reviews.length-1){
+        reviewcurrentItem=0}
+     name.textContent=reviews[reviewcurrentItem].name;
+     job.textContent=reviews[reviewcurrentItem].job;
+     description.textContent=reviews[reviewcurrentItem].text.slice(0,50);
+
+     image.src=reviews[reviewcurrentItem].img;
+     
+})
+prebtn.addEventListener("click",(e)=>{
+e.preventDefault()
+reviewcurrentItem--;
+if(reviewcurrentItem < 0){
+    reviewcurrentItem=reviews.length-1
+}
+    name.textContent=reviews[reviewcurrentItem].name;
+     job.textContent=reviews[reviewcurrentItem].job;
+     description.textContent=reviews[reviewcurrentItem].text.slice(0,50);
+     image.src=reviews[reviewcurrentItem].img;
+     
+})
+random.addEventListener("click",(e)=>{
+    e.preventDefault()
+let randomnumber=Math.floor(Math.random()*reviews.length)
+console.log(randomnumber)
+reviewcurrentItem=randomnumber
+name.textContent=reviews[reviewcurrentItem].name;
+     job.textContent=reviews[reviewcurrentItem].job;
+     description.textContent=reviews[reviewcurrentItem].text.slice(0,50);
+     image.src=reviews[reviewcurrentItem].img;
+     
+
+})
+    </script>
+
+</body>
+</html>
